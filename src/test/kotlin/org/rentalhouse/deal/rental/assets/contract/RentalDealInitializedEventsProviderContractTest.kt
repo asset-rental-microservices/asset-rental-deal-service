@@ -25,7 +25,7 @@ import java.time.LocalDate
 @ActiveProfiles("contract-test")
 @Provider("assetRentalService")
 @PactFolder("src/test/resources/pacts")
-class RentalDealInitializedEventsPublisherContractTest {
+class RentalDealInitializedEventsProviderContractTest {
 
     @Autowired
     private lateinit var rentalDealEventsPublisher: RentalDealEventsPublisher
