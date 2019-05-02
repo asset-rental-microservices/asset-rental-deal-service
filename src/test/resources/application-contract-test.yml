@@ -1,0 +1,13 @@
+rental:
+  house:
+    asset:
+      service:
+        base:
+          uri: http://localhost:8080
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+
+logging.level.au.com.dius.pact.provider: ALL

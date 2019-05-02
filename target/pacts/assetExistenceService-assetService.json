@@ -1,0 +1,54 @@
+{
+  "provider": {
+    "name": "assetService"
+  },
+  "consumer": {
+    "name": "assetExistenceService"
+  },
+  "interactions": [
+    {
+      "description": "A request to /v1/assets/1000",
+      "request": {
+        "method": "GET",
+        "path": "/v1/assets/1000"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "id": "1000"
+        }
+      },
+      "providerStates": [
+        {
+          "name": "asset with id 1000 exists"
+        }
+      ]
+    },
+    {
+      "description": "A request to /v1/assets/1002",
+      "request": {
+        "method": "GET",
+        "path": "/v1/assets/1002"
+      },
+      "response": {
+        "status": 404
+      },
+      "providerStates": [
+        {
+          "name": "asset with id 1002 does not exist"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.6.5"
+    }
+  }
+}

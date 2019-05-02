@@ -1,0 +1,32 @@
+{
+  "consumer": {
+    "name": "assetService"
+  },
+  "provider": {
+    "name": "assetRentalService"
+  },
+  "messages": [
+    {
+      "description": "a rental deal initialized event",
+      "metaData": {
+        "Content-Type": "application/json"
+      },
+      "contents": {
+        "assetId": "1001"
+      },
+      "providerStates": [
+        {
+          "name": "rental deal for asset with id 1001 is INITIALIZED"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.6.5"
+    }
+  }
+}
