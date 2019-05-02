@@ -1,6 +1,5 @@
 package org.rentalhouse.deal.rental.assets.contract
 
-import au.com.dius.pact.provider.IProviderVerifier
 import au.com.dius.pact.provider.PactVerifyProvider
 import au.com.dius.pact.provider.junit.Provider
 import au.com.dius.pact.provider.junit.State
@@ -19,10 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.junit.jupiter.SpringExtension
-import java.net.URLClassLoader
 import java.time.LocalDate
-import java.util.function.Supplier
-import java.util.function.Function
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT, properties = ["server.port=8080"])
@@ -42,7 +38,7 @@ class RentalDealInitializedEventsPublisherContractTest {
 
     @BeforeEach
     fun before(context: PactVerificationContext) {
-        context.target = AmpqTestTarget(listOf())
+        context.target = AmpqTestTarget(listOf("org.rentalhouse.deal.rental.assets.contract.*"))
     }
 
     @PactVerifyProvider(value = "a rental deal initialized event")
@@ -64,24 +60,3 @@ class RentalDealInitializedEventsPublisherContractTest {
     @State("rental deal for asset with id 1001 is INITIALIZED")
     fun state() {}
 }
-//
-//class A(val packagesToScan1: List<String> = emptyList()) : AmpqTestTarget(packagesToScan1) {
-//
-//    override fun prepareVerifier(verifier: IProviderVerifier, testInstance: Any) {
-//        verifier.projectClasspath = Supplier {
-//            val classLoader = RentalDealInitializedEventsPublisherContractTest::class.java.classLoader
-//            when (classLoader) {
-//                is URLClassLoader -> classLoader.urLs.toList()
-//                else -> emptyList()
-//            }
-//        }
-//        val defaultProviderMethodInstance = verifier.providerMethodInstance
-//        verifier.providerMethodInstance = Function { m ->
-//            if (m.declaringClass == testInstance.javaClass) {
-//                testInstance
-//            } else {
-//                defaultProviderMethodInstance.apply(m)
-//            }
-//        }
-//    }
-//}
