@@ -9,7 +9,7 @@ rental:
 spring:
   data:
     mongodb:
-      uri: ${MONGODB_URI:mongodb://localhost}/asset-rental-deal-service
+      uri: ${MONGODB_URI:mongodb://mongo}/asset-rental-deal-service
   application:
     name: asset-rental-deal-service
   cloud:
@@ -20,7 +20,7 @@ spring:
           content-type: application/json
       kafka:
         binder:
-          brokers: localhost:9092
+          brokers: kafka:9092
 
 server:
   port: 8080
@@ -28,6 +28,6 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URI:http://service-discovery:8761/eureka}
   instance:
     preferIpAddress: true

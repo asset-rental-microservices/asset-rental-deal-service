@@ -1,3 +1,13 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost}/asset-rental-deal-service
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+
 rental:
   house:
     asset:
@@ -9,5 +19,3 @@ eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
-
-logging.level.au.com.dius.pact.provider: ALL

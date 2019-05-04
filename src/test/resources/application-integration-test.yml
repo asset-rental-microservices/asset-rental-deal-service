@@ -1,3 +1,13 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost}/asset-rental-deal-service
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+
 eureka:
   client:
     registerWithEureka: false
